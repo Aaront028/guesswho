@@ -8,12 +8,14 @@
 
 {{!-- loop through images --}}
 <div class="image-grid">
-<img src="/images/elizabeth.png" alt="">
-<img src="/images/jp.png" alt="">
+{{#each object}}
+<img src="/images/{{name}}.png" alt="" name="{{id or name}}" href="/profile/{{id}}">
+
+{{!-- <img src="/images/jp.png" alt="">
 </div>
 
 <div class="image-grid">
 <img src="/images/aaron.png" alt="">
 <img src="/images/jeremy.png" alt="">
-</div>
+</div> --}}
 </div>

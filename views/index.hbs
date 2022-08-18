@@ -5,21 +5,25 @@
 {{!-- <h2>WRONG ANSWER! Try again?</h2> --}}
 <button class="quote">Random Quote</button>
 
-<h2>"I play the guitar"</h2>
+<h2 name="{{id}}">{{currentQuote}}</h2>
 
 {{!-- loop through images --}}
 
 {{!-- href="/right" to home route --}}
 <div class="image-grid">
-<img src="/images/elizabeth.png" alt="" >
+
+  {{#each users}}
+    <img src="{{img}}" alt="{{name}}" name="{{id}}" href="/profile/{{id}}">
+  {{/each}}
+  
+{{!-- <img src="/images/elizabeth.png" alt="" >
 <img src="/images/jp.png" alt="">
 </div>
 
 <div class="image-grid">
 <img src="/images/aaron.png" alt="">
-<img src="/images/jeremy.png" alt="">
+<img src="/images/jeremy.png" alt=""> --}}
 </div>
-
 {{!-- <ul>
   {{#each users}}
   <li>{{name}} ({{email}})</li>
