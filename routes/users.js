@@ -14,4 +14,6 @@ router.get('/', (req, res) => {
     })
 })
 
+// insert logic here to render either right or wrong.
+
 module.exports = router
