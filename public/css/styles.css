@@ -4,20 +4,21 @@ body {
   background-color: #9ADCFF;
 }
 
-* {
+/* * {
   border:1px red solid;
-}
+} */
 
 .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
+  padding-bottom: 50px;
 }
 
 .image-grid {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
   align-items: center;

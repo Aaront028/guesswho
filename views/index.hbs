@@ -13,9 +13,11 @@
 <div class="image-grid">
 
   {{#each users}}
-    <img src="{{img}}" alt="{{name}}" name="{{id}}" href="/check/{{id}}/?quoteid={{../id}}" >
+  <a href="/check/{{id}}/?quoteid={{../id}}">
+    <img src="{{img}}" alt="{{name}}" name="{{id}}">
+  </a>
   {{/each}}
-  
+</div>
 {{!-- <img src="/images/elizabeth.png" alt="" >
 <img src="/images/jp.png" alt="">
 </div>
@@ -23,7 +25,7 @@
 <div class="image-grid">
 <img src="/images/aaron.png" alt="">
 <img src="/images/jeremy.png" alt=""> --}}
-</div>
+
 {{!-- <ul>
   {{#each users}}
   <li>{{name}} ({{email}})</li>

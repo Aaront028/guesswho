@@ -6,11 +6,19 @@ const router = express.Router()
 
 //GET home page
 router.get('/', (req, res) => {
-  let peopleNum = 4
-  let randomPerson = Math.floor(Math.random() * peopleNum) + 1
-  console.log(randomPerson)
   db.getUsers()
     .then((users) => {
+      let peopleNum = users.length
+      let randomPerson = Math.floor(Math.random() * peopleNum) + 1
+      users.forEach((x) => {
+        if (x.id == randomPerson) {
+          x.selected = 'selected'
+        } else {
+          x.selected = ''
+        }
+      })
+      console.log('randomPerson: ', randomPerson)
+      console.log('users: ', users)
       let currentObject = users.find((item) => {
         return item.id === randomPerson
       })
@@ -23,22 +31,17 @@ router.get('/', (req, res) => {
     })
 })
 
-// profile/id
-// req.body for id random number
-
 router.get('/check/:id', (req, res) => {
   let clickedPerson = req.params.id
   let quotePerson = req.query.quoteid
-  // let currentObject = users.find((item) => {
-  //   return item.id === randomPerson
-  // })
-  db.getUsersById(clickedPerson)
 
-    .then((user) => {
+  db.getUserById(clickedPerson)
+
+    .then(() => {
       if (clickedPerson === quotePerson) {
-        res.redirect(`/right/${clickedPerson}`, { user })
+        res.redirect(`/right/${clickedPerson}`)
       } else {
-        res.redirect(`/wrong/${clickedPerson}`, { user })
+        res.redirect(`/wrong/${clickedPerson}`)
       }
     })
     .catch((err) => {
@@ -75,7 +78,8 @@ router.get('/wrong/:id', (req, res) => {
     })
 })
 
-// insert logic here to render either right or wrong.
-//when click try again or return button, need routes for redirect to home
-//USE HBS for redirect to home
+router.get('/pearring', (req, res) => {
+  res.render('pearring')
+})
+
 module.exports = router

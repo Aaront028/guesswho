@@ -10,7 +10,7 @@ exports.seed = function (knex) {
       id: 2,
       name: 'JP',
       img: '/images/jp.png',
-      quote: "I'm just vibing",
+      quote: "I don't actually like Jed's coffee",
     },
     {
       id: 3,
@@ -118,7 +118,7 @@ exports.seed = function (knex) {
       id: 20,
       name: 'Ramesh',
       img: '/images/ramesh.png',
-      quote: 'k-pop FTW!',
+      quote: 'I like early morning swims',
     },
     {
       id: 21,
