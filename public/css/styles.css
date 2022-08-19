@@ -59,6 +59,23 @@ img:hover {
   box-shadow:  2px 2px 10px 2px black;
 }
 
+.homeButton {
+  font-size: 50px;
+  font-family: "Patrick Hand SC";
+  background-color: #FFF89A;
+  box-shadow:  2px 2px 10px 2px black;
+  padding: 25px;
+}
+
+#wrong {
+  color: red;
+}
+
+#right{
+  color:green;
+}
+
+
 footer {
   background-color:#FFF89A;
   position: fixed;
