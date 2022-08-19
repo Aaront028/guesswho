@@ -5,6 +5,7 @@ const connection = require('knex')(config)
 module.exports = {
   getUserById,
   getUsers,
+  close,
 }
 
 function getUsers(db = connection) {
@@ -13,4 +14,8 @@ function getUsers(db = connection) {
 
 function getUserById(id, db = connection) {
   return db('manaia').where('id', id).first()
+}
+
+function close(db = connection) {
+  return db.destroy()
 }
