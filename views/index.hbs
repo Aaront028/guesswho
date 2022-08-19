@@ -5,7 +5,7 @@
 {{!-- <h2>WRONG ANSWER! Try again?</h2> --}}
 <button class="quote">Random Quote</button>
 
-<h2 name="{{id}}">{{currentQuote}}</h2>
+<h2 name="{{currentQuote.id}}">{{currentQuote}}</h2>
 
 {{!-- loop through images --}}
 
@@ -13,7 +13,7 @@
 <div class="image-grid">
 
   {{#each users}}
-    <img src="{{img}}" alt="{{name}}" name="{{id}}" href="/profile/{{id}}">
+    <img src="{{img}}" alt="{{name}}" name="{{id}}" href="/check/{{id}}/?quoteid={{../id}}" >
   {{/each}}
   
 {{!-- <img src="/images/elizabeth.png" alt="" >

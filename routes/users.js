@@ -4,6 +4,7 @@ const db = require('../db')
 
 const router = express.Router()
 
+//GET home page
 router.get('/', (req, res) => {
   let peopleNum = 4
   let randomPerson = Math.floor(Math.random() * peopleNum) + 1
@@ -15,42 +16,66 @@ router.get('/', (req, res) => {
       })
       let currentQuote = currentObject.quote
 
-      res.render('index', { users, currentQuote })
+      res.render('index', { users, currentQuote, id: currentObject.id })
     })
     .catch((err) => {
       res.status(500).send('DATABASE ERROR: ' + err.message)
     })
 })
 
-//getting the object from usere that mathces randomPerson  that id and then getting quote
-//
-//}
-// const powerData = powerDataJson.superPower.find((item) => {
-//   return item.id == randomPerson
-// })
+// profile/id
+// req.body for id random number
 
-// random number home page
+router.get('/check/:id', (req, res) => {
+  let clickedPerson = req.params.id
+  let quotePerson = req.query.quoteid
+  // let currentObject = users.find((item) => {
+  //   return item.id === randomPerson
+  // })
+  db.getUsersById(clickedPerson)
 
-// /profile/:id
-//if statement
+    .then((user) => {
+      if (clickedPerson === quotePerson) {
+        res.redirect(`/right/${clickedPerson}`, { user })
+      } else {
+        res.redirect(`/wrong/${clickedPerson}`, { user })
+      }
+    })
+    .catch((err) => {
+      console.error(err)
+      res.status(500).send('Server error')
+    })
+})
 
-//  let randomnumber = Math.floor(Math.random() * 6) + 1
-// let randomPerson = Math.floor(Math.random() * peopleNum) + 1
-// our randomly generated correct answer
-// quote =
+//GET Right page
+router.get('/right/:id', (req, res) => {
+  const id = req.params.id
 
-// if( req.params.id === users.id){
-// res.render('right', { users: users })}
-// else {
-//   res.render('wrong', { users: users })
-// }
+  db.getUserById(id)
+    .then((user) => {
+      res.render('right', { user })
+    })
+    .catch((err) => {
+      console.error(err)
+      res.status(500).send('Server error')
+    })
+})
+
+//GET wrong page
+router.get('/wrong/:id', (req, res) => {
+  const id = req.params.id
+  db.getUserById(id)
+    .then((user) => {
+      res.render('wrong', { user })
+    })
+
+    .catch((err) => {
+      console.error(err)
+      res.status(500).send('Server error')
+    })
+})
 
 // insert logic here to render either right or wrong.
-//   call the informtion from the database
-//   get the click information i.e the users guess
-//
-//   check that against the correct answer (the quote and ids match)
-//   if correct: send them to the right page
-//   if wrong send them to the wrong page
-
+//when click try again or return button, need routes for redirect to home
+//USE HBS for redirect to home
 module.exports = router
