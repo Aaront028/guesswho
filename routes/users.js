@@ -78,4 +78,8 @@ router.get('/wrong/:id', (req, res) => {
     })
 })
 
+router.get('/pearring', (req, res) => {
+  res.render('pearring')
+})
+
 module.exports = router

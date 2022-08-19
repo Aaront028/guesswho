@@ -118,7 +118,7 @@ exports.seed = function (knex) {
       id: 20,
       name: 'Ramesh',
       img: '/images/ramesh.png',
-      quote: 'k-pop FTW!',
+      quote: 'I like early morning swims',
     },
     {
       id: 21,
