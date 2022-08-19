@@ -8,8 +8,6 @@ const router = express.Router()
 router.get('/', (req, res) => {
   db.getUsers()
     .then((users) => {
-      let quotePerson = req.query.quoteid
-      console.log(quotePerson)
       let peopleNum = users.length
       let randomPerson = Math.floor(Math.random() * peopleNum) + 1
       console.log(randomPerson)
