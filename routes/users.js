@@ -10,15 +10,7 @@ router.get('/', (req, res) => {
     .then((users) => {
       let peopleNum = users.length
       let randomPerson = Math.floor(Math.random() * peopleNum) + 1
-      users.forEach((x) => {
-        if (x.id == randomPerson) {
-          x.selected = 'selected'
-        } else {
-          x.selected = ''
-        }
-      })
-      console.log('randomPerson: ', randomPerson)
-      console.log('users: ', users)
+
       let currentObject = users.find((item) => {
         return item.id === randomPerson
       })
@@ -50,7 +42,7 @@ router.get('/check/:id', (req, res) => {
     })
 })
 
-//GET Right page
+//GET Right pageif
 router.get('/right/:id', (req, res) => {
   const id = req.params.id
 
@@ -83,3 +75,13 @@ router.get('/pearring', (req, res) => {
 })
 
 module.exports = router
+// users.forEach((x) => {
+//   if (x.id == randomPerson) {
+//     x.selected = 'selected'
+//   } else {
+//     x.selected = ''
+//   }
+// })
+
+// console.log('randomPerson: ', randomPerson)
+// console.log('users: ', users)
