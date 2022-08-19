@@ -4,9 +4,9 @@ body {
   background-color: #9ADCFF;
 }
 
-* {
+/* * {
   border:1px red solid;
-}
+} */
 
 .container {
   display: flex;
@@ -36,6 +36,12 @@ h2 {
   background-color: white;
   padding: 15px;
   border: 5px black solid
+}
+p{font-size: 25px;
+  background-color: white;
+  padding: 15px;
+  border: 2px black solid;
+
 }
 
 

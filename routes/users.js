@@ -25,15 +25,10 @@ router.get('/', (req, res) => {
     })
 })
 
-// profile/id
-// req.body for id random number
-
 router.get('/check/:id', (req, res) => {
   let clickedPerson = req.params.id
   let quotePerson = req.query.quoteid
-  // let currentObject = users.find((item) => {
-  //   return item.id === randomPerson
-  // })
+
   db.getUserById(clickedPerson)
 
     .then(() => {
@@ -55,7 +50,7 @@ router.get('/right/:id', (req, res) => {
 
   db.getUserById(id)
     .then((user) => {
-      res.render('right', { ...user })
+      res.render('right', user)
     })
     .catch((err) => {
       console.error(err)
@@ -68,7 +63,7 @@ router.get('/wrong/:id', (req, res) => {
   const id = req.params.id
   db.getUserById(id)
     .then((user) => {
-      res.render('wrong', { ...user })
+      res.render('wrong', user)
     })
 
     .catch((err) => {
@@ -77,7 +72,4 @@ router.get('/wrong/:id', (req, res) => {
     })
 })
 
-// insert logic here to render either right or wrong.
-//when click try again or return button, need routes for redirect to home
-//USE HBS for redirect to home
 module.exports = router
