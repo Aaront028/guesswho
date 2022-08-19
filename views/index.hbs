@@ -13,7 +13,9 @@
 <div class="image-grid">
 
   {{#each users}}
-    <img src="{{img}}" alt="{{name}}" name="{{id}}" href="/check/{{id}}/?quoteid={{../id}}" >
+  <a href="/check/{{id}}/?quoteid={{../id}}">
+    <img src="{{img}}" alt="{{name}}" name="{{id}}">
+  </a>
   {{/each}}
   
 {{!-- <img src="/images/elizabeth.png" alt="" >
