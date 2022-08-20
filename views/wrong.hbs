@@ -1,10 +1,10 @@
 <div class="container">
 <h1>Guess Who's</h1>
 <h2 id="wrong">WRONG ANSWER!.. <em>You don't know me</em></h2>
-<a href="/"<button class="homeButton"><strong>Play again?</strong> </button></a>
-
+<a href="/home/{{secondId}}"><button class="homeButton"><strong>Try again?</strong> </button></a>
+<a href="/"><button class="homeButton"><strong>Start again?</strong> </button></a>
 {{!-- <h2 id="wrong">"I play the guitar"</h2>? --}}
 
-<img src={{img}} alt="{{name}}">
-<p>Name: {{name}}<br> "{{quote}}"</p>
+<img src={{user.img}} alt="{{user.name}}">
+<p>Name: {{user.name}}<br> "{{user.quote}}"</p>
 </div>
