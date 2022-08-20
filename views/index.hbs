@@ -1,15 +1,11 @@
 
 <h1>Guess Who</h1>
 
-{{!-- Put this under DOM --}}
-{{!-- <h2>WRONG ANSWER! Try again?</h2> --}}
 <button class="quote">Random Quote</button>
 
 <h2 name="{{currentQuote.id}}">{{currentQuote}}</h2>
 
-{{!-- loop through images --}}
 
-{{!-- href="/right" to home route --}}
 <div class="image-grid">
 
   {{#each users}}
@@ -18,16 +14,3 @@
   </a>
   {{/each}}
 </div>
-{{!-- <img src="/images/elizabeth.png" alt="" >
-<img src="/images/jp.png" alt="">
-</div>
-
-<div class="image-grid">
-<img src="/images/aaron.png" alt="">
-<img src="/images/jeremy.png" alt=""> --}}
-
-{{!-- <ul>
-  {{#each users}}
-  <li>{{name}} ({{email}})</li>
-  {{/each}}
-</ul> --}}

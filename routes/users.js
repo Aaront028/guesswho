@@ -10,12 +10,25 @@ router.get('/', (req, res) => {
     .then((users) => {
       let peopleNum = users.length
       let randomPerson = Math.floor(Math.random() * peopleNum) + 1
-
+      console.log(randomPerson)
       let currentObject = users.find((item) => {
         return item.id === randomPerson
       })
       let currentQuote = currentObject.quote
 
+      res.render('index', { users, currentQuote, id: currentObject.id })
+    })
+    .catch((err) => {
+      res.status(500).send('DATABASE ERROR: ' + err.message)
+    })
+})
+//Try again route
+router.get('/home/:id', (req, res) => {
+  let randomPerson = req.params.id
+  db.getUsers()
+    .then((users) => {
+      let currentObject = users.find((item) => item.id == randomPerson)
+      let currentQuote = currentObject.quote
       res.render('index', { users, currentQuote, id: currentObject.id })
     })
     .catch((err) => {
@@ -33,7 +46,7 @@ router.get('/check/:id', (req, res) => {
       if (clickedPerson === quotePerson) {
         res.redirect(`/right/${clickedPerson}`)
       } else {
-        res.redirect(`/wrong/${clickedPerson}`)
+        res.redirect(`/wrong/${clickedPerson}/${quotePerson}`)
       }
     })
     .catch((err) => {
@@ -57,11 +70,12 @@ router.get('/right/:id', (req, res) => {
 })
 
 //GET wrong page
-router.get('/wrong/:id', (req, res) => {
+router.get('/wrong/:id/:secondId', (req, res) => {
   const id = req.params.id
+  const secondId = req.params.secondId
   db.getUserById(id)
     .then((user) => {
-      res.render('wrong', user)
+      res.render('wrong', { user, secondId })
     })
 
     .catch((err) => {
